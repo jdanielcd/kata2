@@ -1,30 +1,24 @@
 package kata2;
 
-import java.util.ArrayList;
-
 public class Kata2 {
 
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
+        int[] vector = {1,2,4,3,3,5,8,6,3,3,2};
+        int[] frecuency = {0,0,0,0,0,0,0,0,0,0};
+        int aux;
         
-        for (int i = 0; i < 100; i++) {
-            list.add((int)(Math.random()*80));
+        
+        for (int value : vector) {
+            aux = frecuency[value];
+            frecuency[value]++;
         }
-        
-        for (Integer value : list) {
-            System.out.println(value);
+               
+        aux = 0;
+        for (int i = 0; i < frecuency.length; i++) {
+            if(aux < frecuency[i])
+                aux = i;
         }
+        System.out.println("El valor más frecuente es: "+aux);
         
-        ArrayList<Integer> elderPeople = new ArrayList<>();
-        for (Integer value : list) {
-            if(value <= 70) continue;
-            elderPeople.add(value);
-        }
-        
-        list.removeAll(elderPeople);
-        
-        for (Integer value : list) {
-            System.out.println(value);
-        }
     }
 }
